@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      padding: 4rem;
+      text-align: center;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    form {
+      width: 40%;
+      margin: 2rem 0;
+    }
+    form input {
+      padding: 10px;
+      border: 2px solid grey;
+      border-radius: 5px;
+      width: 70%;
+      margin-bottom: 1rem;
+    }
+    form button {
+      padding: 10px;
+      border: none;
+      width: 100px;
+      color: white;
+      background-color: blueviolet;
+      border-radius: 5px;
+    }
+    table {
+      margin-top: 2rem;
+      width: 70%;
+    }
+
+    table thead tr th {
+      padding: 1rem;
+    }
+    table tbody tr {
+      background-color: rgb(205, 205, 205);
+    }
+    table tbody tr td{
+        padding:1rem;
+    }
+  </style>
+  <body>
+    <h1>URL shortener</h1>
+    <main>
+      <form action="/shortener" method="POST">
+        <input type="url" name="fullUrl" placeholder="url" id="url" />
+        <button type="'submit">Shrink</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Full URL</th>
+            <th>short URL</th>
+            <th>clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%shortUrls.forEach((url)=>{%>
+          <tr>
+            <td>
+              <a href="<%= url.full %> "><%= url.full %> </a>
+            </td>
+            <td>
+              <a href="<%= url.short %> "><%= url.short %> </a>
+            </td>
+            <td><%= url.clicks %></td>
+          </tr>
+
+          <% })%>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
